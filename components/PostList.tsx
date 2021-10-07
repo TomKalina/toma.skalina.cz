@@ -36,7 +36,7 @@ export default function PostList() {
   return (
     <section>
       <ul>
-        {data.pages.nodes.map((post, index) => (
+        {data.pages.nodes.map((post: any, index: number) => (
           <li key={post.id}>
             <div>
               <span>{index + 1}. </span>

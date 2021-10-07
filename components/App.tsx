@@ -1,6 +1,6 @@
 import Header from "./Header";
 
-export default function App({ children }) {
+const App: React.FC = ({ children }) => {
   return (
     <main>
       <Header />
@@ -47,4 +47,6 @@ export default function App({ children }) {
       `}</style>
     </main>
   );
-}
+};
+
+export default App;
