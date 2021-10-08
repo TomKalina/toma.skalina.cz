@@ -1,8 +1,11 @@
 schema: https://skalina.cz/graphql
 generates:
-  types/generate.d.ts:
+  types/generate.ts:
+    documents: ./gqls/*.ts
     plugins:
       - typescript
       - typescript-operations
+      - typescript-react-apollo
     config:
       maybeValue: T | null | undefined
+      reactApolloVersion: 3

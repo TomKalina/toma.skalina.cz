@@ -1,4 +1,5 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
+import { useAllPostsQuery } from "../types/generate";
 
 export const ALL_POSTS_QUERY = gql`
   query allPosts {
@@ -12,15 +13,16 @@ export const ALL_POSTS_QUERY = gql`
 `;
 
 export default function PostList() {
-  const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
+  // const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
 
+  const { loading, error, data } = useAllPostsQuery();
   if (error) return <div>{JSON.stringify(error)}</div>;
   if (loading) return <div>Loading</div>;
 
   return (
     <section>
       <ul>
-        {data.pages.nodes.map((post: any, index: number) => (
+        {data?.pages?.nodes?.map((post: any, index: number) => (
           <li key={post.id}>
             <div>
               <span>{index + 1}. </span>
