@@ -1,6 +1,6 @@
 schema: https://skalina.cz/graphql
 generates:
-  types/generate.ts:
+  _codegen.ts:
     documents: ./gqls/*.ts
     plugins:
       - typescript
