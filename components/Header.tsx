@@ -14,9 +14,6 @@ export default function Header() {
           Client-Only
         </a>
       </Link>
-      <Link href="/ssr">
-        <a className={pathname === "/ssr" ? "is-active" : ""}>SSR</a>
-      </Link>
       <style jsx>{`
         header {
           margin-bottom: 25px;

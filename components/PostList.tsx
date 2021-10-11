@@ -1,20 +1,6 @@
-import { gql } from "@apollo/client";
 import { useAllPostsQuery } from "../types/generate";
 
-export const ALL_POSTS_QUERY = gql`
-  query allPosts {
-    pages {
-      nodes {
-        id
-        title
-      }
-    }
-  }
-`;
-
 export default function PostList() {
-  // const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
-
   const { loading, error, data } = useAllPostsQuery();
   if (error) return <div>{JSON.stringify(error)}</div>;
   if (loading) return <div>Loading</div>;
