@@ -1,4 +1,4 @@
-import { useAllPostsQuery } from "../types/generate";
+import { useAllPostsQuery } from "../_codegen";
 
 export default function PostList() {
   const { loading, error, data } = useAllPostsQuery();
