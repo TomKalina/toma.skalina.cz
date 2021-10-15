@@ -1,15 +1,28 @@
-import { ApolloProvider } from "@apollo/client";
-import { useApollo } from "../lib/apolloClient";
-import type { AppProps } from "next/app";
-
 import "tailwindcss/tailwind.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  const apolloClient = useApollo(pageProps);
+import App from "next/app";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import withApollo from "next-with-apollo";
+import React from "react";
+import { getDataFromTree } from "@apollo/client/react/ssr";
 
-  return (
-    <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-    </ApolloProvider>
-  );
+class MyApp extends App<any> {
+  public render() {
+    const { Component, pageProps, apollo } = this.props;
+
+    return (
+      <ApolloProvider client={apollo}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    );
+  }
 }
+
+export default withApollo(
+  ({ initialState }) =>
+    new ApolloClient({
+      uri: "https://skalina.cz/graphql",
+      cache: new InMemoryCache().restore(initialState || {}),
+    }),
+  { getDataFromTree }
+)(MyApp);
