@@ -1,8 +1,9 @@
 import { useAllPostsQuery } from "../_codegen";
+import Error from "./Error";
 
 export default function PostList() {
   const { loading, error, data } = useAllPostsQuery();
-  if (error) return <div>{JSON.stringify(error)}</div>;
+  if (error) return <Error data={error} />;
   if (loading) return <div>Loading</div>;
 
   return (
