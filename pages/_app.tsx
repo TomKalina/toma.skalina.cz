@@ -1,10 +1,11 @@
 import "tailwindcss/tailwind.css";
 
 import App from "next/app";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import withApollo from "next-with-apollo";
 import React from "react";
 import { getDataFromTree } from "@apollo/client/react/ssr";
+import { getApolloClient } from "../lib/apolloClient";
 
 class MyApp extends App<any> {
   public render() {
@@ -18,11 +19,4 @@ class MyApp extends App<any> {
   }
 }
 
-export default withApollo(
-  ({ initialState }) =>
-    new ApolloClient({
-      uri: "https://skalina.cz/graphql",
-      cache: new InMemoryCache().restore(initialState || {}),
-    }),
-  { getDataFromTree }
-)(MyApp);
+export default withApollo(getApolloClient, { getDataFromTree })(MyApp);
