@@ -1,3 +1,5 @@
+import Link from "next/link";
+import React from "react";
 import { useAllPostsQuery } from "../_codegen";
 import Error from "./Error";
 
@@ -13,7 +15,9 @@ export default function PostList() {
           <li key={post.id}>
             <div>
               <span>{index + 1}. </span>
-              <a href={post.url}>{post.title}</a>
+              <Link href={`/page/${post.id}`}>
+                <a>{post.title}</a>
+              </Link>
             </div>
           </li>
         ))}

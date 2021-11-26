@@ -8106,7 +8106,14 @@ export type WritingSettings = {
 export type AllPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllPostsQuery = { __typename?: 'RootQuery', pages?: { __typename?: 'RootQueryToPageConnection', nodes?: Array<{ __typename?: 'Page', id: string, title?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+export type AllPostsQuery = { __typename?: 'RootQuery', pages?: { __typename?: 'RootQueryToPageConnection', nodes?: Array<{ __typename?: 'Page', id: string, title?: string | null | undefined, uri?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+
+export type DetailPageQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DetailPageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', id: string, content?: string | null | undefined } | null | undefined };
 
 
 export const AllPostsDocument = gql`
@@ -8115,6 +8122,7 @@ export const AllPostsDocument = gql`
     nodes {
       id
       title
+      uri
     }
   }
 }
@@ -8146,3 +8154,39 @@ export function useAllPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<A
 export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
 export type AllPostsLazyQueryHookResult = ReturnType<typeof useAllPostsLazyQuery>;
 export type AllPostsQueryResult = Apollo.QueryResult<AllPostsQuery, AllPostsQueryVariables>;
+export const DetailPageDocument = gql`
+    query detailPage($id: ID!) {
+  page(id: $id) {
+    id
+    content
+  }
+}
+    `;
+
+/**
+ * __useDetailPageQuery__
+ *
+ * To run a query within a React component, call `useDetailPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDetailPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useDetailPageQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDetailPageQuery(baseOptions: Apollo.QueryHookOptions<DetailPageQuery, DetailPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<DetailPageQuery, DetailPageQueryVariables>(DetailPageDocument, options);
+      }
+export function useDetailPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DetailPageQuery, DetailPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<DetailPageQuery, DetailPageQueryVariables>(DetailPageDocument, options);
+        }
+export type DetailPageQueryHookResult = ReturnType<typeof useDetailPageQuery>;
+export type DetailPageLazyQueryHookResult = ReturnType<typeof useDetailPageLazyQuery>;
+export type DetailPageQueryResult = Apollo.QueryResult<DetailPageQuery, DetailPageQueryVariables>;
