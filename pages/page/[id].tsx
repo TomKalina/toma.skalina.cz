@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import * as React from "react";
-import App from "../../components/App";
+import Layout from "../../components/Layout";
 import { useDetailPageQuery } from "../../_codegen";
 
 interface Props {}
@@ -12,13 +12,13 @@ const Page: React.FC<Props> = ({}) => {
     variables: { id: String(router.query.id) },
   });
   return (
-    <App>
+    <Layout>
       <div
         dangerouslySetInnerHTML={{
           __html: data.data?.page?.content ?? "",
         }}
       />
-    </App>
+    </Layout>
   );
 };
 

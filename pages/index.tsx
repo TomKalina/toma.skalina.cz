@@ -1,10 +1,15 @@
 import React from "react";
-import App from "../components/App";
+import Layout from "../components/Layout";
+import Image from "next/image";
 
 const Index = () => {
   return (
-    <App>
-      <img src="/images/person/11.webp" className="rounded-full w-28 mx-auto" />
+    <Layout>
+      {/* <Image
+        src="https://www.tailwind-kit.com/images/person/11.webp"
+        className="rounded-full w-28 mx-auto"
+        alt="ja"
+      /> */}
       <p className="text-3xl my-6 text-center dark:text-white">
         Hi, I&#x27;m Charlie 🤘
       </p>
@@ -19,7 +24,7 @@ const Index = () => {
           CONNECT WITH ME
         </a>
       </div>
-    </App>
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 import Header from "./Header";
 
-const App: React.FC = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   return (
     <main className="dark:bg-gray-800 font-mono bg-white relative overflow-hidden h-screen">
       <div className="hidden md:block absolute -bottom-32 -left-32 w-96 h-96">
@@ -56,4 +56,4 @@ const App: React.FC = ({ children }) => {
   );
 };
 
-export default App;
+export default Layout;
