@@ -28,6 +28,8 @@ export type ActionMonitorAction = ContentNode & DatabaseIdentifier & Node & Node
   content?: Maybe<Scalars['String']>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
   /** The unique identifier stored in the database */
   databaseId: Scalars['Int'];
   /** Post publishing date. */
@@ -308,6 +310,8 @@ export type Category = DatabaseIdentifier & HierarchicalTermNode & MenuItemLinka
   slug?: Maybe<Scalars['String']>;
   /** Connection between the category type and the Taxonomy type */
   taxonomy?: Maybe<CategoryToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']>;
   /** The taxonomy ID that the object is associated with */
@@ -935,6 +939,8 @@ export enum CommentsConnectionOrderbyEnum {
 export type ContentNode = {
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
   /** The ID of the node in the database. */
   databaseId: Scalars['Int'];
   /** Post publishing date. */
@@ -1947,6 +1953,13 @@ export type GeneralSettings = {
   url?: Maybe<Scalars['String']>;
 };
 
+/** The genesisBlocksGlobalSettings setting type */
+export type GenesisBlocksGlobalSettingsSettings = {
+  __typename?: 'GenesisBlocksGlobalSettingsSettings';
+  /** The string Settings Group */
+  genesisBlocksMailchimpApiKey?: Maybe<Scalars['String']>;
+};
+
 /** Content node with hierarchical (parent/child) relationships */
 export type HierarchicalContentNode = {
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
@@ -2156,6 +2169,8 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   comments?: Maybe<MediaItemToCommentConnection>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
   /** The unique identifier stored in the database */
   databaseId: Scalars['Int'];
   /** Post publishing date. */
@@ -2376,6 +2391,10 @@ export enum MediaItemSizeEnum {
   AbBlockPostGridLandscape = 'AB_BLOCK_POST_GRID_LANDSCAPE',
   /** MediaItem with the ab-block-post-grid-square size */
   AbBlockPostGridSquare = 'AB_BLOCK_POST_GRID_SQUARE',
+  /** MediaItem with the gb-block-post-grid-landscape size */
+  GbBlockPostGridLandscape = 'GB_BLOCK_POST_GRID_LANDSCAPE',
+  /** MediaItem with the gb-block-post-grid-square size */
+  GbBlockPostGridSquare = 'GB_BLOCK_POST_GRID_SQUARE',
   /** MediaItem with the large size */
   Large = 'LARGE',
   /** MediaItem with the medium size */
@@ -2968,6 +2987,8 @@ export type NodeWithExcerptExcerptArgs = {
 export type NodeWithFeaturedImage = {
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
   /** The unique identifier stored in the database */
   databaseId: Scalars['Int'];
   /** Post publishing date. */
@@ -3129,6 +3150,8 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   content?: Maybe<Scalars['String']>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
   /** The unique resource identifier path */
   databaseId: Scalars['Int'];
   /** Post publishing date. */
@@ -3493,6 +3516,8 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   content?: Maybe<Scalars['String']>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
   /** The unique resource identifier path */
   databaseId: Scalars['Int'];
   /** Post publishing date. */
@@ -3734,6 +3759,8 @@ export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceI
   slug?: Maybe<Scalars['String']>;
   /** Connection between the postFormat type and the Taxonomy type */
   taxonomy?: Maybe<PostFormatToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']>;
   /** The taxonomy ID that the object is associated with */
@@ -4968,6 +4995,8 @@ export type RootQuery = {
   discussionSettings?: Maybe<DiscussionSettings>;
   /** Fields of the &#039;GeneralSettings&#039; settings group */
   generalSettings?: Maybe<GeneralSettings>;
+  /** Fields of the &#039;GenesisBlocksGlobalSettingsSettings&#039; settings group */
+  genesisBlocksGlobalSettingsSettings?: Maybe<GenesisBlocksGlobalSettingsSettings>;
   /** Confirms this is a WP Gatsby site */
   isWpGatsby?: Maybe<Scalars['Boolean']>;
   /** An object of the mediaItem Type.  */
@@ -6485,6 +6514,8 @@ export type Settings = {
   generalSettingsTitle?: Maybe<Scalars['String']>;
   /** Settings of the the string Settings Group */
   generalSettingsUrl?: Maybe<Scalars['String']>;
+  /** Settings of the the string Settings Group */
+  genesisBlocksGlobalSettingsSettingsGenesisBlocksMailchimpApiKey?: Maybe<Scalars['String']>;
   /** Settings of the the integer Settings Group */
   readingSettingsPostsPerPage?: Maybe<Scalars['Int']>;
   /** Settings of the the integer Settings Group */
@@ -6533,6 +6564,8 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   tagId?: Maybe<Scalars['Int']>;
   /** Connection between the tag type and the Taxonomy type */
   taxonomy?: Maybe<TagToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']>;
   /** The taxonomy ID that the object is associated with */
@@ -6880,6 +6913,8 @@ export type TermNode = {
   name?: Maybe<Scalars['String']>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']>;
   /** The taxonomy ID that the object is associated with */
@@ -7294,6 +7329,7 @@ export type UpdateSettingsInput = {
   generalSettingsTitle?: Maybe<Scalars['String']>;
   /** URL adresa instalovaného WordPress webu. */
   generalSettingsUrl?: Maybe<Scalars['String']>;
+  genesisBlocksGlobalSettingsSettingsGenesisBlocksMailchimpApiKey?: Maybe<Scalars['String']>;
   /** Stránky blogu zobrazí nejvíce. */
   readingSettingsPostsPerPage?: Maybe<Scalars['Int']>;
   /** Výchozí rubrika příspěvku. */
@@ -7315,6 +7351,8 @@ export type UpdateSettingsPayload = {
   discussionSettings?: Maybe<DiscussionSettings>;
   /** Update the general setting. */
   generalSettings?: Maybe<GeneralSettings>;
+  /** Update the genesisBlocksGlobalSettings setting. */
+  genesisBlocksGlobalSettingsSettings?: Maybe<GenesisBlocksGlobalSettingsSettings>;
   /** Update the reading setting. */
   readingSettings?: Maybe<ReadingSettings>;
   /** Update the writing setting. */
