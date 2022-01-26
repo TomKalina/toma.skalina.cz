@@ -1,9 +1,16 @@
-import { ApolloError } from "@apollo/client/errors";
+import { ApolloError } from "@apollo/client";
+import * as React from "react";
 
-export default function Error(props: { data: ApolloError | undefined }) {
+interface Props {
+  data: ApolloError | undefined;
+}
+
+const Error: React.FC<Props> = ({ data }) => {
   return (
     <div style={{ border: "1px solid red" }}>
-      {props.data?.message} {JSON.stringify(props.data)}
+      {data?.message} {JSON.stringify(data)}
     </div>
   );
-}
+};
+
+export default Error;
