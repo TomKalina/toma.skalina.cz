@@ -13,9 +13,6 @@ const Index = () => {
       <p className="text-3xl my-6 text-center dark:text-white">
         Hi, I&#x27;m Tom 🤘
       </p>
-      <h2 className="max-w-3xl text-5xl md:text-6xl font-bold mx-auto dark:text-white text-gray-800 text-center py-2">
-        Building digital products, brands, and experiences.
-      </h2>
       <div className="flex items-center justify-center mt-4">
         <a
           href="mailto:info@tomaskalina.cz"
